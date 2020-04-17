@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+log
+volume_app
+volume_db
+.virtualenv
+.vscode
