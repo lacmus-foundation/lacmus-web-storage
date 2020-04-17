@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+  db:
+    container_name: postgres
+    image: postgres:latest
+    env_file: database.conf
+    ports:
+      - 5432:5432  
+    volumes:
+      - ./volume_db:/var/lib/postgresql
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    env_file: app.conf
+    ports:
+      - 5000:5000  
+    volumes:
+      - ./volume_app:/app/storage
+      - ./log:/app/log
+    depends_on:
+      - db
